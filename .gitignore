@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-.DS_Store
-.node_modules
-/dist
-
-
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-node_modules
-=======
 # Logs
 logs
 *.log
@@ -128,4 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
->>>>>>> 3f7c99f2292945d0d688e60a3e5981dc5b27b7ca
