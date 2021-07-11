@@ -62,7 +62,7 @@
                 id="name"
                 placeholder="Your Name"
               />
-              <span id="input-1-live-feedback">This is a required field and must be at least 3 characters</span>
+              <!-- <span id="input-1-live-feedback">This is a required field and must be at least 3 characters</span> -->
             </div>
             <div class="col-md-6 form-group mt-3 mt-md-0">
               <input
