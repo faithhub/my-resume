@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import BootstrapVue from "bootstrap-vue";
+// import BootstrapVue from "bootstrap-vue";
 import router from './components/router/index'
 
 // import "bootstrap/dist/css/bootstrap.css";
