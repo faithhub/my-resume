@@ -305,6 +305,16 @@ h6 {
     z-index: 999;
     margin-top: 0;
 }
+.position-nav{
+    position: fixed !important;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+
+}
 
 .navbar-mobile .mobile-nav-toggle {
     position: absolute;
@@ -322,11 +332,12 @@ h6 {
     padding: 10px 0;
     overflow-y: auto;
     transition: 0.3s;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 6px solid rgb(255 255 255 / 94%);
+    border-radius: 40px;
 }
 
 .navbar-mobile li {
-    padding: 12px 20px;
+    padding: 30px 30px;
 }
 
 .navbar-mobile li+li {
@@ -334,7 +345,7 @@ h6 {
 }
 
 .navbar-mobile a {
-    font-size: 16px;
+    font-size: 20px;
     position: relative;
 }
 

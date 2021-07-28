@@ -69,7 +69,7 @@
         </div>
 
         <div class="row skills-content">
-          <div class="col-lg-4" v-for="stack in stacks" :key="stack.name">
+          <div class="col-lg-4 col-md-4 col-sm-4" v-for="stack in stacks" :key="stack.name">
             <div class="progress">
               <span class="skill">{{ stack.name }}</span>
             </div>

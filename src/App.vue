@@ -8,7 +8,7 @@
       </h1>
       <h2>I'm a passionate <span>Back-end Developer</span> based in Nigeria</h2>
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" v-if="bool == true" class="navbar">
         <ul>
         <router-link v-for="link in links" :key="link.name"  :to="link.route" >
           <li>
@@ -16,7 +16,18 @@
           </li>
         </router-link>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle" @click="toggleActive"></i>
+        <!-- <i class="bi bi-list mobile-nav-toggle"  v-on:click="mobileMenu"></i> -->
+        <i class="bi bi-list mobile-nav-toggle"  @click="bool ? one() : two()"></i>
+      </nav><!-- .navbar -->
+      <nav id="navbar" v-else class="navbar navbar-mobile" style="position: fixed !important">
+        <ul>
+        <router-link v-for="link in links" :key="link.name"  :to="link.route" >
+          <li>
+          <a class="nav-link" @click="bool ? one() : two()" v-bind:class="[{ 'active': $route.path == link.route }, link.class]" v-bind:href="link.route" style="cursor:pointer">{{ link.name }}</a>
+          </li>
+        </router-link>
+        </ul>
+        <i class="bi bi-x mobile-nav-toggle"  @click="bool ? one() : two()"></i>
       </nav><!-- .navbar -->
 
       <div class="social-links">
@@ -41,20 +52,42 @@
     // import.meta; './assets/js/jquery.slimscroll.js';
     // import.meta; './assets/plugins/bootstrap/js/bootstrap.min.js';
 // import Main from './components/home.vue'
+const select = (el, all = false) => {
+        el = el.trim()
+        if (all) {
+            return [...document.querySelectorAll(el)]
+        } else {
+            return document.querySelector(el)
+        }
+    }
+    
+    const on = (type, el, listener, all = false) => {
+        let selectEl = select(el, all)
+
+        if (selectEl) {
+            if (all) {
+                selectEl.forEach(e => e.addEventListener(type, listener))
+            } else {
+                selectEl.addEventListener(type, listener)
+            }
+        }
+    }
 export default {
+  
   name: 'App',
   components: {
     // Main
   },
   data() {
-    return {      
-    props: ['companionData', 'isActive'],
+    return {
+      bool: true,
+    isActive: false,      
       name:'Faith Oluwadara',
       author:'Faith',
       home: '/',
       header: '',
       links: [
-        { name: "Home", route: "/", class:"" },
+        { name: "Home", route: "/", class:"lii" },
         { name: "About", route: "/about", class:"lii" },
         { name: "Resume", route: "/resume", class:"lii" },
         { name: "Projects", route: "/projects", class:"lii" },
@@ -71,19 +104,20 @@ export default {
     };
   },
   methods:{
-      toggleActive() {
-        this.$emit('onToggle')
-      },
-navBar: function (event) {
-      // `this` inside methods points to the Vue instance
-      alert('Hello ' + this.name + '!')
-        // select('#navbar').classList.toggle('navbar-mobile')
+    one(){
+      console.log('one');
+      this.bool = !this.bool;
+    },
+    two(){
+      console.log('two');
+      this.bool = !this.bool;
+      },    
+    mobileMenu(){
+      // alert()
+      this.isActive == !this.isActive
+        // select('.navbar').classList.toggle('navbar-mobile')
         // this.classList.toggle('bi-list')
         // this.classList.toggle('bi-x')
-      // `event` is the native DOM event
-      if (event) {
-        alert(event.target.tagName)
-      }
     }
   },
   watch:{
@@ -97,11 +131,6 @@ navBar: function (event) {
       }  
     }
 } ,
- mounted() {
-    let externalScript = document.createElement('script')
-    externalScript.setAttribute('src', 'https://www.example-of-external-script.com/script.js')
-    document.head.appendChild(externalScript)
-  },
 updated() {
   //  console.log(this.$route)
 }
@@ -109,6 +138,13 @@ updated() {
   </script>
 <style>
 @import '/assets/css/style.css';
+@import '/assets/vendor/swiper/swiper-bundle.min.css';
+@import '/assets/vendor/remixicon/remixicon.css';
+@import '/assets/vendor/glightbox/css/glightbox.min.css';
+@import '/assets/vendor/boxicons/css/boxicons.min.css';
+@import '/assets/vendor/bootstrap-icons/bootstrap-icons.css';
+@import '/assets/vendor/bootstrap/css/bootstrap.min.css';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -117,11 +153,22 @@ updated() {
   color: #2c3e50;
   margin-top: 60px;
 }
+a {
+color: #18d26e;
+  text-decoration: none !important;
+}
+  a:hover {
+color: #18d26e;
+  text-decoration: none !important;
+  }
 
 
 .lii {
     position: relative !important;
     margin-left: 30px !important;
+}
+p{
+color:white;
 }
 
 </style>

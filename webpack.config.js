@@ -1,5 +1,6 @@
-module.exports = {
-    mode: 'development',
+const webpack = require('webpack');
+module.exports = {    
+    mode: 'production'
     // ...
     resolve: {
         alias: {
