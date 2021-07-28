@@ -16,7 +16,7 @@
           </li>
         </router-link>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class="bi bi-list mobile-nav-toggle" @click="toggleActive"></i>
       </nav><!-- .navbar -->
 
       <div class="social-links">
@@ -38,15 +38,17 @@
 </template>
 
 <script>
+    // import.meta; './assets/js/jquery.slimscroll.js';
+    // import.meta; './assets/plugins/bootstrap/js/bootstrap.min.js';
 // import Main from './components/home.vue'
-
 export default {
   name: 'App',
   components: {
     // Main
   },
   data() {
-    return {
+    return {      
+    props: ['companionData', 'isActive'],
       name:'Faith Oluwadara',
       author:'Faith',
       home: '/',
@@ -68,9 +70,26 @@ export default {
       ],
     };
   },
+  methods:{
+      toggleActive() {
+        this.$emit('onToggle')
+      },
+navBar: function (event) {
+      // `this` inside methods points to the Vue instance
+      alert('Hello ' + this.name + '!')
+        // select('#navbar').classList.toggle('navbar-mobile')
+        // this.classList.toggle('bi-list')
+        // this.classList.toggle('bi-x')
+      // `event` is the native DOM event
+      if (event) {
+        alert(event.target.tagName)
+      }
+    }
+  },
   watch:{
     '$route' () {
-      if (this.$route.path === '/') {
+      if (this.$route.
+      path === '/') {
         this.header = 'header'
       }
       else {
@@ -78,13 +97,18 @@ export default {
       }  
     }
 } ,
+ mounted() {
+    let externalScript = document.createElement('script')
+    externalScript.setAttribute('src', 'https://www.example-of-external-script.com/script.js')
+    document.head.appendChild(externalScript)
+  },
 updated() {
   //  console.log(this.$route)
 }
 }
-</script>
-
+  </script>
 <style>
+@import '/assets/css/style.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
